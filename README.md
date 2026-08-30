@@ -2,9 +2,26 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![LangGraph](https://img.shields.io/badge/LangGraph-StateGraph-purple.svg)](https://github.com/langchain-ai/langgraph)
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20Platform-emerald.svg?style=flat&logo=render)](https://paperforge-cwd9.onrender.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 An independent, citation-anchored reproduction and extension of the research paper **"Graph-Based Agentic AI with LangGraph: Workflow Pathways for Long-Running Stateful Business Processes"** ([arXiv:2607.19297](https://arxiv.org/abs/2607.19297)).
+
+---
+
+##  Live Demo Platform  👇🏼
+<div align="center">
+  <a href="https://onrender.com" style="text-decoration: none;">
+  <button style="padding: 10px 20px; background-color: #481df2; color: white; border: none; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-weight: 600;">
+    <!-- Modern SVG Cube/Isometric Box Icon -->
+    <svg xmlns="http://w3.org" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m21 16-9 .54V21l9-5.46zM21 8l-9-5.46v5.46l9 5.46zM12 2.54 3 8l9 5.46 9-5.46zM3 8v7.54l9 5.46V13.5z"/>
+    </svg>
+    Try PaperForge
+  </button>
+  </a>
+</div>
+
 
 ---
 
@@ -13,7 +30,7 @@ An independent, citation-anchored reproduction and extension of the research pap
 **PaperForge** converts non-deterministic, prompt-based LLM loops into explicit, auditable, and stateful **LangGraph State Graphs** (`StateGraph`). 
 
 ### Implemented Workflow Recipes
-1. **SQL Analytics Repair Loop**: Formulates SQL from natural language, validates syntax, executes queries against a database (SQLite / MySQL), and automatically repairs query syntax or column errors with bounded retry limits (`attempts < 3`).
+1. **SQL Analytics Repair Loop**: Formulates SQL from natural language, validates syntax, executes queries against a database (SQLite / MySQL / Postgres), and automatically repairs query syntax or column errors with bounded retry limits (`attempts < 3`).
 2. **Agentic RAG Evidence Loop**: Multi-stage document retrieval, relevance evidence grading, citation verification, and re-retrieval routing to eliminate ungrounded hallucinations.
 3. **HITL Policy Review**: Stateful workflow featuring durable checkpoints (`MemorySaver`) and human interrupt steps (`interrupt_before=["human_review"]`).
 4. **Extension Meta-Orchestrator**: Unified enterprise router classifying user intent (`'analytics'`, `'rag'`, `'policy'`) and delegating execution to the proper stateful subgraph.
@@ -24,7 +41,7 @@ An independent, citation-anchored reproduction and extension of the research pap
 
 ### 1. Installation
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/PaperForge.git
+git clone https://github.com/Bibek-Gupta14/PaperForge.git
 cd PaperForge
 pip install -r requirements.txt
 ```
@@ -78,6 +95,7 @@ PaperForge/
 │   ├── agentic_rag.py            # Agentic RAG Evidence Gating graph
 │   ├── hitl_policy.py           # HITL Policy Review with MemorySaver checkpointing
 │   ├── meta_orchestrator.py      # Unified multi-recipe intent router
+│   ├── db.py                     # Multi-database layer (SQLite / MySQL / Postgres)
 │   └── web_server.py             # FastAPI REST endpoints & embedded Web Dashboard
 ├── tests/                        # Automated Pytest Suite
 │   └── test_baseline.py          # State transition & boundary tests
